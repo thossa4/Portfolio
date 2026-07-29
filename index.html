@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tanvir Hossain | GIS & Remote Sensing Specialist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <span class="nav-logo">TH</span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#contact" class="btn-nav">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="hero-bg">
+    <canvas id="mapCanvas"></canvas>
+    <div class="hero-overlay"></div>
+  </div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">GIS &amp; Remote Sensing Specialist · Machine Learning Researcher</p>
+    <h1 class="hero-name">Tanvir Hossain</h1>
+    <p class="hero-sub">PhD Candidate in Geography · Louisiana State University<br>
+      Coastal hazard ML/DL modeling · Drought &amp; ET remote sensing · Multi-hazard risk<br>
+      5 journal manuscripts · 5 book chapters · AGU · AAG · EGU</p>
+    <div class="hero-badges">
+      <span class="badge">ArcGIS Pro</span>
+      <span class="badge">Google Earth Engine</span>
+      <span class="badge">XGBoost · LSTM · 1D-CNN</span>
+      <span class="badge">Python · R</span>
+      <span class="badge">Sentinel · Landsat · MODIS</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-primary">View My Work</a>
+      <a href="#contact" class="btn-secondary">Get in Touch</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">5</span><span class="stat-lbl">Journal Papers</span></div>
+      <div class="stat"><span class="stat-num">5+</span><span class="stat-lbl">Book Chapters</span></div>
+      <div class="stat"><span class="stat-num">3</span><span class="stat-lbl">Conferences</span></div>
+      <div class="stat"><span class="stat-num">10</span><span class="stat-lbl">Projects</span></div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll to explore</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section id="about">
+  <div class="container">
+    <div class="section-label">About Me</div>
+    <div class="about-grid">
+      <div class="about-text">
+        <h2>Turning Geospatial Data<br><span class="accent">Into Actionable Insight</span></h2>
+        <p>I am a PhD candidate in Geography at Louisiana State University specializing in GIS, Remote Sensing, and machine learning for coastal hazard and climate risk assessment. My research spans multi-hazard susceptibility mapping, drought prediction, evapotranspiration modeling, and climate migration — producing 5 journal manuscripts and 5 book chapters at various stages from in-review to in-press.</p>
+        <p>As a Teaching Assistant at LSU and SCAUG Scholarship 2024 recipient, I combine rigorous academic training with hands-on expertise in ArcGIS Pro, Google Earth Engine, Python, and deep learning frameworks (XGBoost, LSTM, 1D-CNN). I collaborate with LSU AgCenter's LaHouse Research Center on agricultural and coastal resilience research.</p>
+        <p>My dissertation core paper benchmarks 8 ML/DL algorithms (XGBoost, RF, GBM, SVM, MLP, 1D-CNN, LSTM, CNN-LSTM) for simultaneous susceptibility mapping of four compound coastal hazards — flooding, subsidence, storm surge, and salinity intrusion — across Terrebonne Parish at 30-m resolution, with spatial block cross-validation revealing a 53% performance gap versus standard holdout metrics.</p>
+        <div class="about-highlights">
+          <div class="highlight"><div class="highlight-icon">&#127758;</div><div><strong>Coastal Louisiana</strong><br>Primary study area for dissertation research</div></div>
+          <div class="highlight"><div class="highlight-icon">&#128200;</div><div><strong>ML &amp; Deep Learning</strong><br>XGBoost, LSTM, 1D-CNN, Stacking Ensemble</div></div>
+          <div class="highlight"><div class="highlight-icon">&#128225;</div><div><strong>Multi-source RS</strong><br>Sentinel-1/2, Landsat, MODIS, AERIS, GOES-16</div></div>
+        </div>
+      </div>
+      <div class="about-card-wrap">
+        <div class="about-card">
+          <div class="card-avatar">TH</div>
+          <h3>Tanvir Hossain</h3>
+          <p class="card-title">PhD Candidate · GIS &amp; Remote Sensing</p>
+          <div class="card-items">
+            <div class="card-item"><span class="ci-icon">&#127979;</span> Louisiana State University</div>
+            <div class="card-item"><span class="ci-icon">&#128205;</span> Baton Rouge, Louisiana, USA</div>
+            <div class="card-item"><span class="ci-icon">&#128231;</span> tanvir.54.hossain@gmail.com</div>
+            <div class="card-item"><span class="ci-icon">&#127941;</span> SCAUG Scholarship 2024</div>
+            <div class="card-item"><span class="ci-icon">&#127979;</span> Teaching Assistant, LSU</div>
+          </div>
+          <a href="#contact" class="btn-card">Connect With Me</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SKILLS ── -->
+<section id="skills">
+  <div class="container">
+    <div class="section-label">Technical Skills</div>
+    <h2 class="section-title">Expertise &amp; Tools</h2>
+    <p class="section-sub">Proficient in the full geospatial stack — from satellite data acquisition to advanced spatial modeling and web visualization.</p>
+
+    <div class="skills-grid">
+
+      <div class="skill-card">
+        <div class="skill-icon">&#128506;</div>
+        <h3>GIS Software</h3>
+        <div class="skill-tags">
+          <span class="tag">ArcGIS Pro</span>
+          <span class="tag">QGIS</span>
+          <span class="tag">ModelBuilder</span>
+          <span class="tag">ArcPy</span>
+          <span class="tag">ArcGIS Online</span>
+          <span class="tag">CrimeStat IV</span>
+          <span class="tag">StoryMaps</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">&#127760;</div>
+        <h3>Remote Sensing Platforms</h3>
+        <div class="skill-tags">
+          <span class="tag">Google Earth Engine</span>
+          <span class="tag">ERDAS Imagine</span>
+          <span class="tag">Sentinel-1 SAR</span>
+          <span class="tag">Sentinel-2 Optical</span>
+          <span class="tag">Landsat 8/9 OLI</span>
+          <span class="tag">MODIS NDVI/LST</span>
+          <span class="tag">NOAA GOES-16</span>
+          <span class="tag">NASA POWER / VIIRS</span>
+          <span class="tag">AERIS Weather Network</span>
+          <span class="tag">DynamicWorld / NLCD</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">&#128187;</div>
+        <h3>Programming &amp; Scripting</h3>
+        <div class="skill-tags">
+          <span class="tag">Python</span>
+          <span class="tag">R</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">GeoPandas</span>
+          <span class="tag">Shapely</span>
+          <span class="tag">Rasterio</span>
+          <span class="tag">Scikit-learn</span>
+          <span class="tag">Pandas / NumPy</span>
+          <span class="tag">Jupyter</span>
+          <span class="tag">Node.js</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">&#128202;</div>
+        <h3>Spatial Analysis Methods</h3>
+        <div class="skill-tags">
+          <span class="tag">Hotspot Analysis</span>
+          <span class="tag">LISA / Moran's I</span>
+          <span class="tag">Kriging &amp; Cokriging</span>
+          <span class="tag">Factor Analysis / PCA</span>
+          <span class="tag">Geocoding</span>
+          <span class="tag">Network Analysis</span>
+          <span class="tag">Raster Overlay</span>
+          <span class="tag">Profile Analysis</span>
+          <span class="tag">Watershed Delineation</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">&#129302;</div>
+        <h3>Machine Learning &amp; Deep Learning</h3>
+        <div class="skill-tags">
+          <span class="tag">XGBoost / GBM</span>
+          <span class="tag">Random Forest</span>
+          <span class="tag">LSTM / 1D-CNN</span>
+          <span class="tag">CNN-LSTM (hybrid)</span>
+          <span class="tag">Stacking Ensemble</span>
+          <span class="tag">SVM</span>
+          <span class="tag">Spatial Block Cross-Validation</span>
+          <span class="tag">Drought Susceptibility</span>
+          <span class="tag">ET₀ Modeling (FAO-56 PM)</span>
+          <span class="tag">Multi-hazard Risk Mapping</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">&#128202;</div>
+        <h3>Data Sources &amp; Standards</h3>
+        <div class="skill-tags">
+          <span class="tag">FEMA NFHL</span>
+          <span class="tag">USGS NHD / DEM</span>
+          <span class="tag">TIGER Census</span>
+          <span class="tag">NRCS SoilGrids</span>
+          <span class="tag">NOAA / NWS</span>
+          <span class="tag">CPRA Louisiana</span>
+          <span class="tag">PRISM Climate</span>
+          <span class="tag">NRI Risk Index</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Proficiency bars -->
+    <div class="proficiency">
+      <h3>Core Platform Proficiency</h3>
+      <div class="prof-grid">
+        <div class="prof-item">
+          <div class="prof-header"><span>ArcGIS Pro</span><span>95%</span></div>
+          <div class="prof-bar"><div class="prof-fill" style="width:95%"></div></div>
+        </div>
+        <div class="prof-item">
+          <div class="prof-header"><span>Google Earth Engine</span><span>88%</span></div>
+          <div class="prof-bar"><div class="prof-fill" style="width:88%"></div></div>
+        </div>
+        <div class="prof-item">
+          <div class="prof-header"><span>Python (Spatial)</span><span>85%</span></div>
+          <div class="prof-bar"><div class="prof-fill" style="width:85%"></div></div>
+        </div>
+        <div class="prof-item">
+          <div class="prof-header"><span>QGIS</span><span>82%</span></div>
+          <div class="prof-bar"><div class="prof-fill" style="width:82%"></div></div>
+        </div>
+        <div class="prof-item">
+          <div class="prof-header"><span>Remote Sensing Analysis</span><span>90%</span></div>
+          <div class="prof-bar"><div class="prof-fill" style="width:90%"></div></div>
+        </div>
+        <div class="prof-item">
+          <div class="prof-header"><span>R (Statistical GIS)</span><span>78%</span></div>
+          <div class="prof-bar"><div class="prof-fill" style="width:78%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROJECTS ── -->
+<section id="projects">
+  <div class="container">
+    <div class="section-label">Portfolio</div>
+    <h2 class="section-title">Featured Projects</h2>
+    <p class="section-sub">A selection of GIS and remote sensing projects spanning coastal hazard research, urban analysis, and applied spatial modeling.</p>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="research">Research</button>
+      <button class="filter-btn" data-filter="remote-sensing">Remote Sensing</button>
+      <button class="filter-btn" data-filter="spatial-analysis">Spatial Analysis</button>
+      <button class="filter-btn" data-filter="ml">Machine Learning</button>
+      <button class="filter-btn" data-filter="coursework">Coursework</button>
+    </div>
+
+    <div class="projects-grid" id="projectsGrid"></div>
+  </div>
+</section>
+
+<!-- ── EDUCATION ── -->
+<section id="education">
+  <div class="container">
+    <div class="section-label">Education &amp; Credentials</div>
+    <h2 class="section-title">Academic Background</h2>
+
+    <div class="edu-timeline">
+
+      <div class="edu-item">
+        <div class="edu-dot"></div>
+        <div class="edu-content">
+          <div class="edu-year">2024 – Present</div>
+          <h3>PhD in Geography</h3>
+          <p class="edu-inst">Louisiana State University, Baton Rouge, LA</p>
+          <p>Specialization in GIS, Remote Sensing, and Coastal Hazard Assessment. Dissertation: Multi-hazard vulnerability mapping in South Louisiana using satellite remote sensing, spatial modeling, and machine learning.</p>
+          <div class="edu-tags">
+            <span>Teaching Assistant</span>
+            <span>SCAUG Scholarship 2024</span>
+            <span>Coastal Geography</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="edu-item">
+        <div class="edu-dot"></div>
+        <div class="edu-content">
+          <div class="edu-year">2024 – Present</div>
+          <h3>GIS Graduate Certificate</h3>
+          <p class="edu-inst">Louisiana State University, Baton Rouge, LA</p>
+          <p>Formal certificate program in Geographic Information Systems complementing PhD research. Coursework covering advanced GIS applications, spatial analysis, and geospatial data management.</p>
+          <div class="edu-tags">
+            <span>ArcGIS Pro</span>
+            <span>Spatial Analysis</span>
+            <span>Geospatial Data</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Courses -->
+    <div class="courses-section">
+      <h3>Relevant Coursework</h3>
+      <div class="courses-grid">
+        <div class="course-card">
+          <div class="course-code">GEOG 4057</div>
+          <div class="course-name">GIS Applications</div>
+          <div class="course-tools">ArcGIS Pro · Python · ModelBuilder</div>
+        </div>
+        <div class="course-card">
+          <div class="course-code">GEOG 7973</div>
+          <div class="course-name">Advanced GIS &amp; Spatial Analysis</div>
+          <div class="course-tools">Hotspot · Kriging · Factor Analysis</div>
+        </div>
+        <div class="course-card">
+          <div class="course-code">GEOG 4048</div>
+          <div class="course-name">Spatial &amp; Crime Analysis</div>
+          <div class="course-tools">CrimeStat IV · KDE · LISA</div>
+        </div>
+        <div class="course-card">
+          <div class="course-code">GEOG 4046</div>
+          <div class="course-name">GIS Applications II</div>
+          <div class="course-tools">Advanced ArcGIS · Spatial Modeling</div>
+        </div>
+        <div class="course-card">
+          <div class="course-code">GEOG 7955</div>
+          <div class="course-name">Advanced Remote Sensing</div>
+          <div class="course-tools">ERDAS Imagine · Supervised Classification · NDVI</div>
+        </div>
+        <div class="course-card">
+          <div class="course-code">EXST 7005/7014</div>
+          <div class="course-name">Statistical Analysis</div>
+          <div class="course-tools">R · Statistical Modeling</div>
+        </div>
+        <div class="course-card">
+          <div class="course-code">BE 7910</div>
+          <div class="course-name">Environmental Data Analysis</div>
+          <div class="course-tools">Python · ML · ET Modeling</div>
+        </div>
+        <div class="course-card">
+          <div class="course-code">ESRI Online</div>
+          <div class="course-name">ESRI Professional GIS Training</div>
+          <div class="course-tools">ArcGIS Ecosystem · Online</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PUBLICATIONS ── -->
+<section id="publications">
+  <div class="container">
+    <div class="section-label">Scholarship</div>
+    <h2 class="section-title">Publications &amp; Conferences</h2>
+
+    <div class="pubs-grid">
+
+      <div class="pub-card pub-journal">
+        <div class="pub-type">Journal Manuscript · Under Review</div>
+        <h3>Multi-Hazard Coastal Susceptibility Mapping — Deltaic Louisiana</h3>
+        <p class="pub-authors">Hossain, T. et al.</p>
+        <p>Simultaneous susceptibility mapping of flooding, land subsidence, storm surge, and salinity intrusion across Terrebonne Parish using 8 ML/DL algorithms (XGBoost, RF, GBM, SVM, MLP, 1D-CNN, LSTM, CNN-LSTM) and 65 conditioning factors at 30-m resolution. 5-fold spatial block cross-validation reveals 53% performance gap versus standard holdout metrics.</p>
+        <div class="pub-tags">
+          <span>Machine Learning</span><span>Deep Learning</span><span>Coastal Louisiana</span><span>Multi-hazard</span>
+        </div>
+      </div>
+
+      <div class="pub-card pub-journal">
+        <div class="pub-type">Journal Manuscript · Under Review</div>
+        <h3>Ensemble ML Drought Susceptibility Mapping — Louisiana</h3>
+        <p class="pub-authors">Hossain, T., Mostafiz, R.B. et al.</p>
+        <p>High-resolution (30-m) statewide drought susceptibility framework integrating Landsat 8 OLI and 15 environmental variables. XGB+ANN stacking ensemble achieves R²=0.94, AUC=0.977. Hotspot analysis identifies agricultural and hydrological drought clusters across Louisiana.</p>
+        <div class="pub-tags">
+          <span>Drought ML</span><span>Landsat 8</span><span>Ensemble Learning</span><span>Louisiana</span>
+        </div>
+      </div>
+
+      <div class="pub-card pub-journal">
+        <div class="pub-type">Journal Manuscript · Under Review</div>
+        <h3>Climate Change Vulnerability in Nepal's Mountainous Regions</h3>
+        <p class="pub-authors">Sujakhu, N.M., Acharya, R., Adusumilli, N., Hossain, T. et al.</p>
+        <p>Spatial dimensions of climate change vulnerability and adaptation pathways for indigenous mountain communities in Nepal, integrating GIS-based vulnerability mapping with community-level adaptive capacity assessment.</p>
+        <div class="pub-tags">
+          <span>Climate Vulnerability</span><span>Nepal</span><span>Spatial Analysis</span><span>Adaptation</span>
+        </div>
+      </div>
+
+      <div class="pub-card pub-journal">
+        <div class="pub-type">Journal Manuscript · Under Review</div>
+        <h3>Machine Learning Techniques to Estimate Daily Reference Evapotranspiration Under Limited Data Availability</h3>
+        <p class="pub-authors">Hossain, T., Zhou, C., Conger, S., Rohli, R., Friedland, C.</p>
+        <p>Compares five machine learning models for daily reference evapotranspiration (ETo) estimation under limited data availability in Louisiana's humid subtropical climate, using the Louisiana Agriclimatic Information System (LAIS) weather station network. Target journal: Journal of the ASABE.</p>
+        <div class="pub-tags">
+          <span>Machine Learning</span><span>Evapotranspiration</span><span>ASCE-PM</span><span>Louisiana</span>
+        </div>
+      </div>
+
+      <div class="pub-card pub-journal">
+        <div class="pub-type">Journal Manuscript · Under Review</div>
+        <h3>Agricultural Training &amp; Technical Efficiency — Philippine Rice Farmers</h3>
+        <p class="pub-authors">Hussain, T., Serinio, M.N., Adusumilli, N., Hossain, T. et al.</p>
+        <p>Stochastic Frontier Analysis (SFA) assessing the impact of AMIA climate-resilient agricultural training programs on rice yield and technical efficiency in Biliran and Southern Leyte provinces, Philippines.</p>
+        <div class="pub-tags">
+          <span>SFA</span><span>Philippines</span><span>Agricultural Economics</span><span>Climate Resilience</span>
+        </div>
+      </div>
+
+      <div class="pub-card pub-chapter">
+        <div class="pub-type">Book Chapter · In Press 2026</div>
+        <h3>Climate-Induced Migration &amp; Agricultural Resilience — Coastal Louisiana</h3>
+        <p class="pub-authors">Mostafiz, R.B. &amp; Hossain, T. — <em>Climate on the Move</em></p>
+        <p>Parish-year panel analysis (2013–2018, n=11 parishes) linking storms, drought (DSCI), and saltwater intrusion (CRMS) to Louisiana sugarcane yield losses. Fixed-effects regression with USDA NASS and NOAA Storm Events data quantifies the hazard–agriculture–mobility pathway.</p>
+        <div class="pub-tags">
+          <span>Climate Migration</span><span>Sugarcane</span><span>Panel Data</span><span>Coastal Louisiana</span>
+        </div>
+      </div>
+
+      <div class="pub-card pub-chapter">
+        <div class="pub-type">Book Chapter · In Press</div>
+        <h3>ML-Driven ET₀ Modeling for Precision Irrigation — Louisiana</h3>
+        <p class="pub-authors">Mostafiz, R.B. &amp; Hossain, T. — <em>Precision Irrigation in Humid Climates</em></p>
+        <p>Comprehensive ET₀ framework comparing FAO-56 Penman-Monteith, Hargreaves-Samani, Priestley-Taylor, and Turc against RF, XGBoost, ANN, LSTM, and 1D-CNN, augmented with NASA MODIS/VIIRS, NOAA GOES-16, and NASA POWER GeoAI inputs across Louisiana's AERIS network.</p>
+        <div class="pub-tags">
+          <span>ET₀ Modeling</span><span>Deep Learning</span><span>GeoAI</span><span>Precision Agriculture</span>
+        </div>
+      </div>
+
+      <div class="pub-card pub-chapter">
+        <div class="pub-type">Book Chapter</div>
+        <h3>Multi-Hazard Tropical Cyclone Risk — Bay of Bengal</h3>
+        <p class="pub-authors">Hossain, T. &amp; Mostafiz, R.B.</p>
+        <p>Multi-scale resilience framework for compound cyclone hazard governance across Bangladesh, India, and Myanmar. Case studies of Cyclones Sidr (2007), Amphan (2020), and Mocha (2023) demonstrate how temporal hazard convergence — not peak intensity — drives worst-case outcomes.</p>
+        <div class="pub-tags">
+          <span>Cyclone Risk</span><span>Bay of Bengal</span><span>Multi-Hazard</span><span>Resilience</span>
+        </div>
+      </div>
+
+      <div class="pub-card pub-chapter">
+        <div class="pub-type">Book Chapter</div>
+        <h3>AI &amp; Geospatial Technologies in Humanitarian Engineering</h3>
+        <p class="pub-authors">Hossain, T. &amp; Mostafiz, R.B.</p>
+        <p>Rapid review of AI and GIS applications for disaster prediction and resilience in humanitarian engineering. Introduces the Technology-Context Fit (TCF) Matrix — an original evaluative typology classifying humanitarian AI deployments by technical and contextual readiness.</p>
+        <div class="pub-tags">
+          <span>AI &amp; GIS</span><span>Humanitarian Engineering</span><span>Disaster Risk</span><span>TCF Matrix</span>
+        </div>
+      </div>
+
+      <div class="pub-card pub-chapter">
+        <div class="pub-type">Book Chapter · In Active Revision</div>
+        <h3>Drought Mitigation</h3>
+        <p class="pub-authors">Mostafiz, R.B., Hossain, T., Rohli, R.V., Bushra, N.</p>
+        <p>A literature-based synthesis of drought forecasting and mitigation strategies — agricultural mitigation, climate-smart agricultural practices, community-based resilience programs (with a Sahel region case study), climate-resilient agriculture, and ecosystem-based approaches.</p>
+        <div class="pub-tags">
+          <span>Drought Mitigation</span><span>Climate-Smart Agriculture</span><span>Community Resilience</span><span>Policy Review</span>
+        </div>
+      </div>
+
+      <div class="pub-card pub-conference">
+        <div class="pub-type">Accepted Oral Presentation</div>
+        <h3>American Association of Geographers (AAG) 2026</h3>
+        <p class="pub-authors">Hossain, T. — San Francisco, CA, March 2026</p>
+        <p>"Developing a Machine Learning Framework for Hazard Susceptibility Mapping and Land Use Vulnerability Assessment in Coastal Louisiana."</p>
+        <div class="pub-tags">
+          <span>AAG 2026</span><span>Hazard Susceptibility</span><span>Machine Learning</span>
+        </div>
+      </div>
+
+      <div class="pub-card pub-conference">
+        <div class="pub-type">Conference Poster</div>
+        <h3>AGU Fall Meeting 2025</h3>
+        <p class="pub-authors">Hossain, T. et al. — American Geophysical Union, Washington D.C.</p>
+        <p>Presented multi-hazard coastal susceptibility mapping research for South Louisiana using ensemble ML/DL and GEE-based remote sensing analysis pipeline.</p>
+        <div class="pub-tags">
+          <span>AGU 2025</span><span>Coastal Hazards</span><span>Remote Sensing</span>
+        </div>
+      </div>
+
+      <div class="pub-card pub-conference">
+        <div class="pub-type">Conference Poster</div>
+        <h3>EGU General Assembly 2026</h3>
+        <p class="pub-authors">Hossain, T. et al. — European Geosciences Union, Vienna</p>
+        <p>Contributed poster on geospatial multi-hazard vulnerability assessment for Gulf Coast communities, extending the analysis with additional socioeconomic and environmental conditioning factors.</p>
+        <div class="pub-tags">
+          <span>EGU 2026</span><span>Vulnerability Assessment</span><span>Gulf Coast</span>
+        </div>
+      </div>
+
+      <div class="pub-card pub-award">
+        <div class="pub-type">Award</div>
+        <h3>SCAUG Scholarship 2024</h3>
+        <p>South Central Arc Users Group (SCAUG) Scholarship — awarded in recognition of academic excellence and outstanding proficiency in GIS and geospatial technologies.</p>
+        <div class="pub-tags">
+          <span>SCAUG</span><span>GIS Excellence</span><span>2024</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label">Get In Touch</div>
+    <h2 class="section-title">Let's Connect</h2>
+    <p class="section-sub">Open to research collaborations, GIS consulting opportunities, and data analyst / remote sensing specialist positions.</p>
+
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Contact Information</h3>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="ci-icon-wrap">&#128231;</div>
+            <div>
+              <strong>Email</strong>
+              <a href="mailto:tanvir.54.hossain@gmail.com">tanvir.54.hossain@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="ci-icon-wrap">&#127979;</div>
+            <div>
+              <strong>Institution</strong>
+              <span>Louisiana State University<br>Department of Geography &amp; Anthropology</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="ci-icon-wrap">&#128205;</div>
+            <div>
+              <strong>Location</strong>
+              <span>Baton Rouge, Louisiana, USA</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="expertise-list">
+          <h4>Available For</h4>
+          <ul>
+            <li>GIS Analyst / Remote Sensing Specialist roles</li>
+            <li>Coastal hazard &amp; flood risk mapping projects</li>
+            <li>Environmental &amp; climate vulnerability consulting</li>
+            <li>Research collaborations in geospatial science</li>
+            <li>Spatial data analysis &amp; visualization projects</li>
+            <li>Government, NGO, and private sector GIS work</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="contact-form-wrap">
+        <form class="contact-form" id="contactForm">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" placeholder="John Smith" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Your Email</label>
+            <input type="email" id="email" placeholder="john@organization.com" required />
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" placeholder="Collaboration / Job Opportunity / Consulting" />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" rows="5" placeholder="Tell me about your project or opportunity..." required></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Send Message</button>
+          <p class="form-note">* This is a portfolio demo form. Please use the email above to reach out directly.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">TH</span>
+        <div>
+          <strong>Tanvir Hossain</strong>
+          <p>GIS &amp; Remote Sensing Specialist · PhD Candidate, LSU</p>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#publications">Publications</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <p class="footer-copy">&copy; 2026 Tanvir Hossain · GIS &amp; Remote Sensing Portfolio</p>
+  </div>
+</footer>
+
+<!-- ── MODALS (populated by JS) ── -->
+<div id="modalsContainer"></div>
+<div id="modalOverlay" class="modal-overlay"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
