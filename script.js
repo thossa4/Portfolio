@@ -1,11 +1,47 @@
 ﻿'use strict';
 
 /* ═══════════════════════════════════════════════
-   PROJECT DATA — 8 research projects
+   PROJECT DATA — 10 projects, ordered by research depth
+   (dissertation ML/DL → applied research → coursework)
 ═══════════════════════════════════════════════ */
 const projects = [
 
-  /* ── 1 ── */
+  /* ── 9 (Ch2 — most advanced: deep sequence models, event-grouped CV) ── */
+  {
+    id: 9, categories: ['research','remote-sensing','ml'],
+    tags: [['Dissertation','ptag-research'],['Deep Learning','ptag-ml'],['Remote Sensing','ptag-rs']],
+    year: '2024 – Present', location: 'Terrebonne Parish, Louisiana',
+    title: 'Hurricane-Driven Agricultural Damage Assessment',
+    subtitle: 'PhD Research — LSU Geography (Dissertation Chapter 2, manuscript complete)',
+    summary: 'Multi-temporal MODIS NDVI (2016–2025) coupled with hurricane track kinematics, weather, soil salinity, elevation, and sea-level records to map hurricane-driven crop damage and chronic crop-health decline across Terrebonne Parish, benchmarked with event-grouped cross-validation.',
+    overview: 'Coastal Louisiana sits at the intersection of some of the most rapidly changing land- and sea-scapes in North America, where recurrent hurricanes, compound flooding, saltwater intrusion, and a high rate of relative sea-level rise converge on a working agricultural landscape. This dissertation chapter (co-authored with Michael Leitner) develops and benchmarks a reproducible ML/DL framework that couples multi-temporal MODIS NDVI observations with hurricane, weather, soil-salinity, elevation, and sea-level data to map hurricane-driven agricultural damage and characterize chronic crop-health decline. Damage was labeled at the pixel level from relative post-storm NDVI decline across 8 named storms, and five machine-learning classifiers were benchmarked against three deep-learning sequence models.',
+    questions: [
+      'Can multi-temporal MODIS NDVI, combined with hurricane and environmental predictors, reliably map pixel-level hurricane-driven crop damage?',
+      'Do deep-learning sequence models (Transformer, LSTM, 1D-CNN) that use the full pre-event NDVI trajectory outperform tabular ML classifiers that use only summary statistics?',
+      'How well do models trained on some storms transfer to a storm they have never seen (event-grouped, out-of-storm validation)?',
+      'What is the pattern of chronic, cumulative crop-health decline in Terrebonne Parish over the 2016–2025 study period, independent of individual storm damage?'
+    ],
+    methodology: 'Pixel-level damage labeling from relative post-storm NDVI decline across 8 named storms → Predictor compilation: hurricane track kinematics, gridded weather, soil salinity, elevation, relative sea-level records → Five ML classifiers benchmarked (regularized logistic regression, SVM, random forest, gradient-boosted trees, MLP) against three deep-learning sequence models (1D-CNN, LSTM, Transformer) → Event-grouped cross-validation, holding out entire storms rather than random pixels, to test genuine transfer to unseen events.',
+    dataSources: [
+      'NASA MODIS NDVI (2016–2025) — multi-temporal vegetation observations',
+      'Hurricane track kinematics — storm predictor variables for 8 named storms',
+      'Gridded weather data — meteorological predictors',
+      'Soil salinity records — saltwater-intrusion predictor',
+      'Elevation data — topographic predictor',
+      'Relative sea-level records — long-term coastal-change predictor'
+    ],
+    findings: [
+      'Under event-grouped cross-validation (held-out storms), the three deep-learning sequence models occupied the top three positions: CNN1D and Transformer tied for best (AUROC 0.657), followed by LSTM (AUROC 0.651)',
+      'All three sequence models outperformed every tabular machine-learning classifier, including logistic regression (AUROC 0.635), the strongest tabular model',
+      'The best model (CNN1D) reached a mean F1-score of 0.331 across held-out storms — a modest but genuine score, reflecting real transfer to unseen events rather than the inflated skill random pixel-splitting would produce',
+      'The result suggests the temporal trajectory of pre-event NDVI carries predictive information beyond what summary statistics available to tabular models can capture',
+      'Among the tabular models, the regularized linear classifier and tree ensembles performed comparably (AUROC near 0.64), with the support vector machine weakest'
+    ],
+    tools: ['NASA MODIS NDVI','Deep learning (Transformer, LSTM, 1D-CNN)','Python (scikit-learn)','Event-grouped cross-validation','Hurricane track data processing'],
+    img: 'maps/project4_flood.png'
+  },
+
+  /* ── 1 (Ch1 — dissertation core, 8 ML/DL + SAEML ensemble) ── */
   {
     id: 1, categories: ['research','remote-sensing','ml'],
     tags: [['Dissertation','ptag-research'],['Machine Learning','ptag-ml'],['Coastal GIS','ptag-sa']],
@@ -43,75 +79,6 @@ const projects = [
     ],
     tools: ['XGBoost / GBM / Random Forest','1D-CNN / LSTM / CNN-LSTM (TensorFlow)','Python (scikit-learn, geopandas, rasterio)','Google Earth Engine (JS API)','ArcGIS Pro','5-fold Spatial Block Cross-Validation'],
     img: 'maps/project1_multihazard.png'
-  },
-
-  /* ── 2 ── */
-  {
-    id: 2, categories: ['research','spatial-analysis'],
-    tags: [['Geostatistics','ptag-sa'],['Kriging','ptag-cw'],['Climate Analysis','ptag-research']],
-    year: '2024', location: 'Louisiana Statewide — Weather Station Network',
-    title: 'Spatial Sensitivity of Reference Evapotranspiration',
-    subtitle: 'GEOG 7973 Term Paper — Spatial Statistics, LSU Geography',
-    summary: 'Grid-scale sensitivity analysis of FAO-56 Penman-Monteith reference evapotranspiration (ETo) to temperature, relative humidity, solar radiation, and wind speed across 10 Louisiana weather stations, mapped via Ordinary Kriging with Getis-Ord Gi* hotspot detection.',
-    overview: 'This term paper analyzes the spatial sensitivity of reference evapotranspiration (ETo) to its four driving climate variables across Louisiana, using 2022–2023 daily data from 10 weather stations spanning the state\'s northern, central, and coastal zones. A One-At-a-Time (OAT) sensitivity analysis, implemented as a custom ArcGIS Pro Python toolbox, quantified how much each variable (and each pairwise combination) shifts FAO-56 Penman-Monteith ETo. The resulting sensitivity index rasters were interpolated via Ordinary Kriging and tested for spatial clustering using global Moran\'s I and Getis-Ord Gi* hotspot analysis.',
-    questions: [
-      'Which of the four FAO-56 PM input variables (temperature, relative humidity, solar radiation, wind speed) most strongly drives ETo variability across Louisiana?',
-      'How does ETo sensitivity to each variable, and to pairwise combinations, vary spatially across the state\'s climate zones?',
-      'Do sensitivity patterns cluster into statistically significant hot and cold spots, and where?',
-      'Does spatial autocorrelation in the sensitivity surfaces support geostatistical interpolation over simpler distance-based methods?'
-    ],
-    methodology: 'Weather station data collection (10 stations, 2022–2023 daily temperature, RH, solar radiation, wind speed) → FAO-56 Penman-Monteith ETo baseline calculation → Custom ArcGIS Pro Python toolbox for One-At-a-Time (OAT) sensitivity index computation, single-variable and pairwise-combination runs → Ordinary Kriging interpolation of sensitivity index rasters → Zonal statistics by parish → Getis-Ord Gi* hotspot detection (inverse-distance conceptualization, 8,380 m threshold) → Global Moran\'s I spatial autocorrelation testing.',
-    dataSources: [
-      'Louisiana weather station network (10 stations: Ben Hur, Chase, Crowley, Hammond, Houma, Iberia, Dean Lee, R&D Research, St. Gabriel, Red River) — 2022–2023 daily temperature, RH, solar radiation, wind speed',
-      'National Weather Service and local monitoring networks — data source',
-      'ArcGIS Pro Geostatistical Analyst — semivariogram fitting and kriging surfaces',
-      'ESRI basemaps (Esri, TomTom, Garmin, FAO, NOAA, USGS) — cartographic context'
-    ],
-    findings: [
-      'Temperature and solar radiation emerged as the dominant drivers of ETo variability statewide, with humidity and wind speed playing secondary, more regionally-dependent roles',
-      'Humidity sensitivity was highest in southern and coastal Louisiana, where high baseline moisture amplifies its effect on ETo; temperature and solar-radiation sensitivity were more pronounced in the energy-limited north',
-      'Global Moran\'s I values were consistently near 1 (≈0.998) with z-scores exceeding 1,090, confirming very strong, highly statistically significant spatial clustering in every sensitivity surface tested',
-      'Getis-Ord Gi* hotspot analysis (99% confidence) identified consistent hot-spot/cold-spot clusters for each variable, generally split along a south/coastal vs. north/interior gradient',
-      'The strength of spatial clustering supports using kriging-based interpolation over simpler distance-only methods for ETo sensitivity mapping in Louisiana'
-    ],
-    tools: ['ArcGIS Pro (Geostatistical Analyst, Python toolbox)','Getis-Ord Gi* Spatial Statistics','Moran\'s I Autocorrelation','Ordinary Kriging','FAO-56 Penman-Monteith (custom implementation)','NWS / local station data'],
-    img: 'maps/project2_heatisland.jpg'
-  },
-
-  /* ── 3 ── */
-  {
-    id: 3, categories: ['research','spatial-analysis'],
-    tags: [['Book Chapter','ptag-research'],['Panel Data','ptag-sa'],['Coastal LA','ptag-rs']],
-    year: '2026', location: 'Louisiana Gulf Coast — 11 Sugarcane Parishes',
-    title: 'Climate-Induced Migration & Coastal Agriculture',
-    subtitle: 'Book Chapter — Climate on the Move (In Press, 2026)',
-    summary: 'Parish-year panel analysis (2013–2018) linking compound coastal hazards — storms, drought, and saltwater intrusion — to Louisiana sugarcane yield losses, quantifying the hazard–agriculture–mobility pathway across 11 coastal parishes.',
-    overview: 'Co-authored with Rubayet Bin Mostafiz (LSU AgCenter LaHouse), this book chapter develops a hybrid evidence base for climate migration\'s impact on agriculture and food security in hazard-prone coastal Louisiana. We conceptually frame a hazard–agriculture–mobility pathway in which storms, drought, and saltwater intrusion shape agricultural outcomes that translate into mobility pressures through income volatility and infrastructure disruption. Empirically, a parish-year panel (2013–2018, n=11 parishes, 66 observations) for Louisiana sugarcane combines yield and acreage from USDA NASS, storm metrics from NOAA Storm Events, drought exposure from the US Drought Monitor (DSCI), and salinity proxies from the Coastwide Reference Monitoring System (CRMS). Fixed-effects regressions with parish and year effects provide directional evidence of multi-hazard agricultural impact.',
-    questions: [
-      'How do compound coastal hazards — storms, drought, and saltwater intrusion — jointly affect sugarcane yields across Louisiana parishes?',
-      'Which hazard type exerts the strongest independent effect on agricultural output and farm mobility pressure?',
-      'Can a parish-year fixed-effects approach identify multi-hazard thresholds that trigger significant yield losses?',
-      'How do spatial patterns of yield decline correlate with known climate out-migration pressures in ACS data?'
-    ],
-    methodology: 'Parish-year panel dataset construction (2013–2018, 11 parishes, 66 observations) → USDA NASS yield and acreage compilation by parish → NOAA Storm Events storm metrics and damage estimates → US Drought Monitor DSCI and D2+ drought week counts → CRMS salinity and water level proxies → Fixed-effects regression (parish + year FE, parish-clustered standard errors) → Spatial mapping of yield trends and hazard layers → ArcGIS Pro cartographic composition for book chapter publication.',
-    dataSources: [
-      'USDA NASS (2013–2018) — sugarcane yield (tons/acre) and harvested acreage by parish',
-      'NOAA Storm Events Database — storm event frequency, damage, and track data',
-      'US Drought Monitor — DSCI (Drought Severity Coverage Index) and weeks in D2+ drought',
-      'CRMS (Coastwide Reference Monitoring System) — salinity and water level proxies',
-      'CPRA Coastal Zone Boundary — 11-parish coastal zone delineation',
-      'ACS 5-year Census — out-migration rates and population change by parish',
-      'TIGER/Line 2022 — Louisiana parish boundaries for spatial mapping'
-    ],
-    findings: [
-      'Drought duration (D2+ weeks) is directionally associated with lower sugarcane yields in the fixed-effects regressions',
-      'Coastal salinity conditions align with lower yields, consistent with saltwater intrusion degrading root-zone soil quality over time — though salinity coefficients are interpreted cautiously given data limitations',
-      'Storm impacts are heterogeneous and sensitive to which exposure metric is used (peak damage vs. cumulative event frequency)',
-      'Parishes with the greatest overlap of multiple hazards tend to also show stronger out-migration trends in ACS 5-year estimates',
-      'The chapter frames stabilizing agricultural outcomes via targeted hazard mitigation as a plausible lever for reducing distress-migration pressure in coastal communities'
-    ],
-    tools: ['ArcGIS Pro (cartographic mapping)','R (fixest — fixed-effects regression)','USDA NASS Data API','NOAA Storm Events Database','US Drought Monitor API','CPRA / CRMS Data Portal'],
-    img: 'maps/project3_migration.png'
   },
 
   /* ── 4 ── */
@@ -189,6 +156,42 @@ const projects = [
     img: 'maps/project5_et.jpg'
   },
 
+  /* ── 3 ── */
+  {
+    id: 3, categories: ['research','spatial-analysis'],
+    tags: [['Book Chapter','ptag-research'],['Panel Data','ptag-sa'],['Coastal LA','ptag-rs']],
+    year: '2026', location: 'Louisiana Gulf Coast — 11 Sugarcane Parishes',
+    title: 'Climate-Induced Migration & Coastal Agriculture',
+    subtitle: 'Book Chapter — Climate on the Move (In Press, 2026)',
+    summary: 'Parish-year panel analysis (2013–2018) linking compound coastal hazards — storms, drought, and saltwater intrusion — to Louisiana sugarcane yield losses, quantifying the hazard–agriculture–mobility pathway across 11 coastal parishes.',
+    overview: 'Co-authored with Rubayet Bin Mostafiz (LSU AgCenter LaHouse), this book chapter develops a hybrid evidence base for climate migration\'s impact on agriculture and food security in hazard-prone coastal Louisiana. We conceptually frame a hazard–agriculture–mobility pathway in which storms, drought, and saltwater intrusion shape agricultural outcomes that translate into mobility pressures through income volatility and infrastructure disruption. Empirically, a parish-year panel (2013–2018, n=11 parishes, 66 observations) for Louisiana sugarcane combines yield and acreage from USDA NASS, storm metrics from NOAA Storm Events, drought exposure from the US Drought Monitor (DSCI), and salinity proxies from the Coastwide Reference Monitoring System (CRMS). Fixed-effects regressions with parish and year effects provide directional evidence of multi-hazard agricultural impact.',
+    questions: [
+      'How do compound coastal hazards — storms, drought, and saltwater intrusion — jointly affect sugarcane yields across Louisiana parishes?',
+      'Which hazard type exerts the strongest independent effect on agricultural output and farm mobility pressure?',
+      'Can a parish-year fixed-effects approach identify multi-hazard thresholds that trigger significant yield losses?',
+      'How do spatial patterns of yield decline correlate with known climate out-migration pressures in ACS data?'
+    ],
+    methodology: 'Parish-year panel dataset construction (2013–2018, 11 parishes, 66 observations) → USDA NASS yield and acreage compilation by parish → NOAA Storm Events storm metrics and damage estimates → US Drought Monitor DSCI and D2+ drought week counts → CRMS salinity and water level proxies → Fixed-effects regression (parish + year FE, parish-clustered standard errors) → Spatial mapping of yield trends and hazard layers → ArcGIS Pro cartographic composition for book chapter publication.',
+    dataSources: [
+      'USDA NASS (2013–2018) — sugarcane yield (tons/acre) and harvested acreage by parish',
+      'NOAA Storm Events Database — storm event frequency, damage, and track data',
+      'US Drought Monitor — DSCI (Drought Severity Coverage Index) and weeks in D2+ drought',
+      'CRMS (Coastwide Reference Monitoring System) — salinity and water level proxies',
+      'CPRA Coastal Zone Boundary — 11-parish coastal zone delineation',
+      'ACS 5-year Census — out-migration rates and population change by parish',
+      'TIGER/Line 2022 — Louisiana parish boundaries for spatial mapping'
+    ],
+    findings: [
+      'Drought duration (D2+ weeks) is directionally associated with lower sugarcane yields in the fixed-effects regressions',
+      'Coastal salinity conditions align with lower yields, consistent with saltwater intrusion degrading root-zone soil quality over time — though salinity coefficients are interpreted cautiously given data limitations',
+      'Storm impacts are heterogeneous and sensitive to which exposure metric is used (peak damage vs. cumulative event frequency)',
+      'Parishes with the greatest overlap of multiple hazards tend to also show stronger out-migration trends in ACS 5-year estimates',
+      'The chapter frames stabilizing agricultural outcomes via targeted hazard mitigation as a plausible lever for reducing distress-migration pressure in coastal communities'
+    ],
+    tools: ['ArcGIS Pro (cartographic mapping)','R (fixest — fixed-effects regression)','USDA NASS Data API','NOAA Storm Events Database','US Drought Monitor API','CPRA / CRMS Data Portal'],
+    img: 'maps/project3_migration.png'
+  },
+
   /* ── 6 ── */
   {
     id: 6, categories: ['research','remote-sensing'],
@@ -225,35 +228,33 @@ const projects = [
     img: 'maps/project6_cyclone.png'
   },
 
-  /* ── 7 ── */
+  /* ── 10 ── */
   {
-    id: 7, categories: ['spatial-analysis','coursework'],
-    tags: [['Hotspot Analysis','ptag-sa'],['Gi* / Moran\'s I','ptag-cw'],['Geostatistics','ptag-cw']],
-    year: '2024', location: 'Louisiana Statewide',
-    title: 'Spatial Hotspot & Climate Autocorrelation',
-    subtitle: 'GEOG 7973 — Advanced Spatial Statistics, LSU Geography',
-    summary: 'Getis-Ord Gi* hotspot analysis and global Moran\'s I applied to grid-scale evapotranspiration sensitivity surfaces across Louisiana — identifying near-maximal, highly significant spatial clustering (Moran\'s I ≈ 0.998, z > 1,090) in every variable tested.',
-    overview: 'A companion analysis to the ETo sensitivity kriging study (GEOG 7973), focused specifically on the autocorrelation and hotspot-detection side of the workflow. The same One-At-a-Time sensitivity index rasters for temperature, solar radiation, relative humidity, and wind speed were tested for spatial clustering using global Moran\'s I and local Getis-Ord Gi* statistics, confirming that ETo sensitivity is not randomly distributed across Louisiana but instead follows a strong, statistically robust south/coastal vs. north/interior spatial structure.',
+    id: 10, categories: ['research'],
+    tags: [['Book Chapter','ptag-research'],['Drought Policy','ptag-sa'],['Mitigation','ptag-cw']],
+    year: '2026', location: 'Global synthesis (incl. Sahel region case study)',
+    title: 'Drought Mitigation',
+    subtitle: 'Book Chapter — In Active Revision',
+    summary: 'A literature-based synthesis of drought forecasting and mitigation strategies — agricultural, climate-smart, community-based, and ecosystem-based approaches — co-authored with Rubayet Bin Mostafiz, Robert V. Rohli, and Nazla Bushra. Distinct from the statewide ML drought-susceptibility mapping project (a separate, quantitative modeling study).',
+    overview: 'Drought poses significant challenges as a natural hazard, affecting water resources, agriculture, ecosystems, and economies worldwide, with climate change exacerbating both its frequency and intensity. This chapter surveys drought forecasting approaches and reviews mitigation strategies across several tracks: agricultural mitigation strategies, climate-smart agricultural practices, community-based resilience programs (with a dedicated case study on the Sahel region), climate-resilient agriculture, and ecosystem-based approaches. It is intentionally distinct from the dissertation-adjacent "Ensemble ML Drought Susceptibility Mapping" project — that project is a quantitative Louisiana-specific ML model, while this chapter is a global mitigation-and-policy literature synthesis.',
     questions: [
-      'Do ETo sensitivity indices for temperature, humidity, solar radiation, and wind speed exhibit statistically significant spatial autocorrelation?',
-      'Where do statistically significant hot and cold spot clusters concentrate for each variable at 99% confidence?',
-      'How consistent is the clustering pattern across the four different climate-variable sensitivity surfaces?',
-      'What distance threshold best captures the spatial structure of these clusters using inverse-distance weighting?'
+      'What forecasting approaches are available for anticipating drought onset and severity?',
+      'Which agricultural mitigation and climate-smart practices are most effective for reducing drought impact?',
+      'What can community-based resilience programs, such as those in the Sahel region, teach about locally-grounded drought adaptation?',
+      'How do ecosystem-based approaches complement structural and agronomic drought mitigation strategies?'
     ],
-    methodology: 'OAT sensitivity index rasters (temperature, solar radiation, relative humidity, wind speed) generated via ArcGIS Pro Python toolbox → Global Moran\'s I spatial autocorrelation testing for each variable → Getis-Ord Gi* hotspot analysis using inverse-distance-weighted conceptualization with an 8,380 m distance threshold → Zonal statistics extraction across Louisiana parishes.',
+    methodology: 'Structured literature synthesis organized by mitigation track: drought forecasting → agricultural mitigation strategies → climate-smart agricultural practices → community-based resilience programs (Sahel region case study) → climate-resilient agriculture → ecosystem-based approaches → synthesis and conclusion.',
     dataSources: [
-      'Louisiana weather station network (10 stations) — 2022–2023 daily temperature, solar radiation, relative humidity, wind speed',
-      'ArcGIS Pro Spatial Statistics Toolbox — Moran\'s I and Getis-Ord Gi* computation',
-      'ESRI Spatial Statistics Toolbox — spatial autocorrelation reports'
+      'Peer-reviewed literature on drought forecasting, agricultural mitigation, and resilience programs',
+      'Sahel region community-based resilience program case studies'
     ],
     findings: [
-      'Global Moran\'s I values were consistently near 1 (≈0.998) across all four sensitivity surfaces, with z-scores exceeding 1,090 and near-zero p-values — confirming the clustering is essentially certain to be non-random',
-      'Getis-Ord Gi* hotspot analysis (99% confidence) identified consistent, spatially coherent hot-spot and cold-spot regions for every variable tested',
-      'Temperature, solar radiation, and wind-speed sensitivity clustering was strongest in energy-limited northern Louisiana, while relative-humidity clustering was more pronounced in the moisture-dependent south',
-      'The consistency of near-maximal Moran\'s I across all four independently-computed sensitivity surfaces suggests the underlying climate driver fields themselves are strongly spatially structured, not an artifact of the sensitivity-index calculation'
+      'Effective drought mitigation requires combining forecasting, agricultural adaptation, and community-based and ecosystem-based approaches rather than relying on any single strategy',
+      'The Sahel region case study illustrates how community-based resilience programs can provide locally-grounded adaptation pathways in chronically drought-exposed regions',
+      'Climate-smart agricultural practices and ecosystem-based approaches are presented as complementary, not competing, tracks within a broader drought mitigation strategy'
     ],
-    tools: ['ArcGIS Pro (Spatial Statistics Toolbox)','Getis-Ord Gi* (inverse-distance weighted)','Global Moran\'s I','Python (ArcGIS Python toolbox)'],
-    img: 'maps/project7_hotspot.jpg'
+    tools: ['Literature synthesis','Comparative policy review'],
+    img: 'maps/project4_drought.jpg'
   },
 
   /* ── 8 ── */
@@ -292,68 +293,68 @@ const projects = [
     img: 'maps/project5_coastal.png'
   },
 
-  /* ── 9 ── */
+  /* ── 2 ── */
   {
-    id: 9, categories: ['research','remote-sensing','ml'],
-    tags: [['Dissertation','ptag-research'],['Deep Learning','ptag-ml'],['Remote Sensing','ptag-rs']],
-    year: '2024 – Present', location: 'Terrebonne Parish, Louisiana',
-    title: 'Hurricane-Driven Agricultural Damage Assessment',
-    subtitle: 'PhD Research — LSU Geography (Dissertation Chapter 2, manuscript complete)',
-    summary: 'Multi-temporal MODIS NDVI (2016–2025) coupled with hurricane track kinematics, weather, soil salinity, elevation, and sea-level records to map hurricane-driven crop damage and chronic crop-health decline across Terrebonne Parish, benchmarked with event-grouped cross-validation.',
-    overview: 'Coastal Louisiana sits at the intersection of some of the most rapidly changing land- and sea-scapes in North America, where recurrent hurricanes, compound flooding, saltwater intrusion, and a high rate of relative sea-level rise converge on a working agricultural landscape. This dissertation chapter (co-authored with Michael Leitner) develops and benchmarks a reproducible ML/DL framework that couples multi-temporal MODIS NDVI observations with hurricane, weather, soil-salinity, elevation, and sea-level data to map hurricane-driven agricultural damage and characterize chronic crop-health decline. Damage was labeled at the pixel level from relative post-storm NDVI decline across 8 named storms, and five machine-learning classifiers were benchmarked against three deep-learning sequence models.',
+    id: 2, categories: ['research','spatial-analysis'],
+    tags: [['Geostatistics','ptag-sa'],['Kriging','ptag-cw'],['Climate Analysis','ptag-research']],
+    year: '2024', location: 'Louisiana Statewide — Weather Station Network',
+    title: 'Spatial Sensitivity of Reference Evapotranspiration',
+    subtitle: 'GEOG 7973 Term Paper — Spatial Statistics, LSU Geography',
+    summary: 'Grid-scale sensitivity analysis of FAO-56 Penman-Monteith reference evapotranspiration (ETo) to temperature, relative humidity, solar radiation, and wind speed across 10 Louisiana weather stations, mapped via Ordinary Kriging with Getis-Ord Gi* hotspot detection.',
+    overview: 'This term paper analyzes the spatial sensitivity of reference evapotranspiration (ETo) to its four driving climate variables across Louisiana, using 2022–2023 daily data from 10 weather stations spanning the state\'s northern, central, and coastal zones. A One-At-a-Time (OAT) sensitivity analysis, implemented as a custom ArcGIS Pro Python toolbox, quantified how much each variable (and each pairwise combination) shifts FAO-56 Penman-Monteith ETo. The resulting sensitivity index rasters were interpolated via Ordinary Kriging and tested for spatial clustering using global Moran\'s I and Getis-Ord Gi* hotspot analysis.',
     questions: [
-      'Can multi-temporal MODIS NDVI, combined with hurricane and environmental predictors, reliably map pixel-level hurricane-driven crop damage?',
-      'Do deep-learning sequence models (Transformer, LSTM, 1D-CNN) that use the full pre-event NDVI trajectory outperform tabular ML classifiers that use only summary statistics?',
-      'How well do models trained on some storms transfer to a storm they have never seen (event-grouped, out-of-storm validation)?',
-      'What is the pattern of chronic, cumulative crop-health decline in Terrebonne Parish over the 2016–2025 study period, independent of individual storm damage?'
+      'Which of the four FAO-56 PM input variables (temperature, relative humidity, solar radiation, wind speed) most strongly drives ETo variability across Louisiana?',
+      'How does ETo sensitivity to each variable, and to pairwise combinations, vary spatially across the state\'s climate zones?',
+      'Do sensitivity patterns cluster into statistically significant hot and cold spots, and where?',
+      'Does spatial autocorrelation in the sensitivity surfaces support geostatistical interpolation over simpler distance-based methods?'
     ],
-    methodology: 'Pixel-level damage labeling from relative post-storm NDVI decline across 8 named storms → Predictor compilation: hurricane track kinematics, gridded weather, soil salinity, elevation, relative sea-level records → Five ML classifiers benchmarked (regularized logistic regression, SVM, random forest, gradient-boosted trees, MLP) against three deep-learning sequence models (1D-CNN, LSTM, Transformer) → Event-grouped cross-validation, holding out entire storms rather than random pixels, to test genuine transfer to unseen events.',
+    methodology: 'Weather station data collection (10 stations, 2022–2023 daily temperature, RH, solar radiation, wind speed) → FAO-56 Penman-Monteith ETo baseline calculation → Custom ArcGIS Pro Python toolbox for One-At-a-Time (OAT) sensitivity index computation, single-variable and pairwise-combination runs → Ordinary Kriging interpolation of sensitivity index rasters → Zonal statistics by parish → Getis-Ord Gi* hotspot detection (inverse-distance conceptualization, 8,380 m threshold) → Global Moran\'s I spatial autocorrelation testing.',
     dataSources: [
-      'NASA MODIS NDVI (2016–2025) — multi-temporal vegetation observations',
-      'Hurricane track kinematics — storm predictor variables for 8 named storms',
-      'Gridded weather data — meteorological predictors',
-      'Soil salinity records — saltwater-intrusion predictor',
-      'Elevation data — topographic predictor',
-      'Relative sea-level records — long-term coastal-change predictor'
+      'Louisiana weather station network (10 stations: Ben Hur, Chase, Crowley, Hammond, Houma, Iberia, Dean Lee, R&D Research, St. Gabriel, Red River) — 2022–2023 daily temperature, RH, solar radiation, wind speed',
+      'National Weather Service and local monitoring networks — data source',
+      'ArcGIS Pro Geostatistical Analyst — semivariogram fitting and kriging surfaces',
+      'ESRI basemaps (Esri, TomTom, Garmin, FAO, NOAA, USGS) — cartographic context'
     ],
     findings: [
-      'Under event-grouped cross-validation (held-out storms), the three deep-learning sequence models occupied the top three positions: CNN1D and Transformer tied for best (AUROC 0.657), followed by LSTM (AUROC 0.651)',
-      'All three sequence models outperformed every tabular machine-learning classifier, including logistic regression (AUROC 0.635), the strongest tabular model',
-      'The best model (CNN1D) reached a mean F1-score of 0.331 across held-out storms — a modest but genuine score, reflecting real transfer to unseen events rather than the inflated skill random pixel-splitting would produce',
-      'The result suggests the temporal trajectory of pre-event NDVI carries predictive information beyond what summary statistics available to tabular models can capture',
-      'Among the tabular models, the regularized linear classifier and tree ensembles performed comparably (AUROC near 0.64), with the support vector machine weakest'
+      'Temperature and solar radiation emerged as the dominant drivers of ETo variability statewide, with humidity and wind speed playing secondary, more regionally-dependent roles',
+      'Humidity sensitivity was highest in southern and coastal Louisiana, where high baseline moisture amplifies its effect on ETo; temperature and solar-radiation sensitivity were more pronounced in the energy-limited north',
+      'Global Moran\'s I values were consistently near 1 (≈0.998) with z-scores exceeding 1,090, confirming very strong, highly statistically significant spatial clustering in every sensitivity surface tested',
+      'Getis-Ord Gi* hotspot analysis (99% confidence) identified consistent hot-spot/cold-spot clusters for each variable, generally split along a south/coastal vs. north/interior gradient',
+      'The strength of spatial clustering supports using kriging-based interpolation over simpler distance-only methods for ETo sensitivity mapping in Louisiana'
     ],
-    tools: ['NASA MODIS NDVI','Deep learning (Transformer, LSTM, 1D-CNN)','Python (scikit-learn)','Event-grouped cross-validation','Hurricane track data processing'],
-    img: 'maps/project4_flood.png'
+    tools: ['ArcGIS Pro (Geostatistical Analyst, Python toolbox)','Getis-Ord Gi* Spatial Statistics','Moran\'s I Autocorrelation','Ordinary Kriging','FAO-56 Penman-Monteith (custom implementation)','NWS / local station data'],
+    img: 'maps/project2_heatisland.jpg'
   },
 
-  /* ── 10 ── */
+  /* ── 7 ── */
   {
-    id: 10, categories: ['research'],
-    tags: [['Book Chapter','ptag-research'],['Drought Policy','ptag-sa'],['Mitigation','ptag-cw']],
-    year: '2026', location: 'Global synthesis (incl. Sahel region case study)',
-    title: 'Drought Mitigation',
-    subtitle: 'Book Chapter — In Active Revision',
-    summary: 'A literature-based synthesis of drought forecasting and mitigation strategies — agricultural, climate-smart, community-based, and ecosystem-based approaches — co-authored with Rubayet Bin Mostafiz, Robert V. Rohli, and Nazla Bushra. Distinct from the statewide ML drought-susceptibility mapping project (a separate, quantitative modeling study).',
-    overview: 'Drought poses significant challenges as a natural hazard, affecting water resources, agriculture, ecosystems, and economies worldwide, with climate change exacerbating both its frequency and intensity. This chapter surveys drought forecasting approaches and reviews mitigation strategies across several tracks: agricultural mitigation strategies, climate-smart agricultural practices, community-based resilience programs (with a dedicated case study on the Sahel region), climate-resilient agriculture, and ecosystem-based approaches. It is intentionally distinct from the dissertation-adjacent "Ensemble ML Drought Susceptibility Mapping" project — that project is a quantitative Louisiana-specific ML model, while this chapter is a global mitigation-and-policy literature synthesis.',
+    id: 7, categories: ['spatial-analysis','coursework'],
+    tags: [['Hotspot Analysis','ptag-sa'],['Gi* / Moran\'s I','ptag-cw'],['Geostatistics','ptag-cw']],
+    year: '2024', location: 'Louisiana Statewide',
+    title: 'Spatial Hotspot & Climate Autocorrelation',
+    subtitle: 'GEOG 7973 — Advanced Spatial Statistics, LSU Geography',
+    summary: 'Getis-Ord Gi* hotspot analysis and global Moran\'s I applied to grid-scale evapotranspiration sensitivity surfaces across Louisiana — identifying near-maximal, highly significant spatial clustering (Moran\'s I ≈ 0.998, z > 1,090) in every variable tested.',
+    overview: 'A companion analysis to the ETo sensitivity kriging study (GEOG 7973), focused specifically on the autocorrelation and hotspot-detection side of the workflow. The same One-At-a-Time sensitivity index rasters for temperature, solar radiation, relative humidity, and wind speed were tested for spatial clustering using global Moran\'s I and local Getis-Ord Gi* statistics, confirming that ETo sensitivity is not randomly distributed across Louisiana but instead follows a strong, statistically robust south/coastal vs. north/interior spatial structure.',
     questions: [
-      'What forecasting approaches are available for anticipating drought onset and severity?',
-      'Which agricultural mitigation and climate-smart practices are most effective for reducing drought impact?',
-      'What can community-based resilience programs, such as those in the Sahel region, teach about locally-grounded drought adaptation?',
-      'How do ecosystem-based approaches complement structural and agronomic drought mitigation strategies?'
+      'Do ETo sensitivity indices for temperature, humidity, solar radiation, and wind speed exhibit statistically significant spatial autocorrelation?',
+      'Where do statistically significant hot and cold spot clusters concentrate for each variable at 99% confidence?',
+      'How consistent is the clustering pattern across the four different climate-variable sensitivity surfaces?',
+      'What distance threshold best captures the spatial structure of these clusters using inverse-distance weighting?'
     ],
-    methodology: 'Structured literature synthesis organized by mitigation track: drought forecasting → agricultural mitigation strategies → climate-smart agricultural practices → community-based resilience programs (Sahel region case study) → climate-resilient agriculture → ecosystem-based approaches → synthesis and conclusion.',
+    methodology: 'OAT sensitivity index rasters (temperature, solar radiation, relative humidity, wind speed) generated via ArcGIS Pro Python toolbox → Global Moran\'s I spatial autocorrelation testing for each variable → Getis-Ord Gi* hotspot analysis using inverse-distance-weighted conceptualization with an 8,380 m distance threshold → Zonal statistics extraction across Louisiana parishes.',
     dataSources: [
-      'Peer-reviewed literature on drought forecasting, agricultural mitigation, and resilience programs',
-      'Sahel region community-based resilience program case studies'
+      'Louisiana weather station network (10 stations) — 2022–2023 daily temperature, solar radiation, relative humidity, wind speed',
+      'ArcGIS Pro Spatial Statistics Toolbox — Moran\'s I and Getis-Ord Gi* computation',
+      'ESRI Spatial Statistics Toolbox — spatial autocorrelation reports'
     ],
     findings: [
-      'Effective drought mitigation requires combining forecasting, agricultural adaptation, and community-based and ecosystem-based approaches rather than relying on any single strategy',
-      'The Sahel region case study illustrates how community-based resilience programs can provide locally-grounded adaptation pathways in chronically drought-exposed regions',
-      'Climate-smart agricultural practices and ecosystem-based approaches are presented as complementary, not competing, tracks within a broader drought mitigation strategy'
+      'Global Moran\'s I values were consistently near 1 (≈0.998) across all four sensitivity surfaces, with z-scores exceeding 1,090 and near-zero p-values — confirming the clustering is essentially certain to be non-random',
+      'Getis-Ord Gi* hotspot analysis (99% confidence) identified consistent, spatially coherent hot-spot and cold-spot regions for every variable tested',
+      'Temperature, solar radiation, and wind-speed sensitivity clustering was strongest in energy-limited northern Louisiana, while relative-humidity clustering was more pronounced in the moisture-dependent south',
+      'The consistency of near-maximal Moran\'s I across all four independently-computed sensitivity surfaces suggests the underlying climate driver fields themselves are strongly spatially structured, not an artifact of the sensitivity-index calculation'
     ],
-    tools: ['Literature synthesis','Comparative policy review'],
-    img: 'maps/project4_drought.jpg'
+    tools: ['ArcGIS Pro (Spatial Statistics Toolbox)','Getis-Ord Gi* (inverse-distance weighted)','Global Moran\'s I','Python (ArcGIS Python toolbox)'],
+    img: 'maps/project7_hotspot.jpg'
   }
 
 ];

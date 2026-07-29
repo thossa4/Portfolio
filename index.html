@@ -73,7 +73,7 @@
         <h2>Turning Geospatial Data<br><span class="accent">Into Actionable Insight</span></h2>
         <p>I am a PhD candidate in Geography at Louisiana State University specializing in GIS, Remote Sensing, and machine learning for coastal hazard and climate risk assessment. My research spans multi-hazard susceptibility mapping, drought prediction, evapotranspiration modeling, and climate migration — producing 5 journal manuscripts and 5 book chapters at various stages from in-review to in-press.</p>
         <p>As a Teaching Assistant at LSU and SCAUG Scholarship 2024 recipient, I combine rigorous academic training with hands-on expertise in ArcGIS Pro, Google Earth Engine, Python, and deep learning frameworks (XGBoost, LSTM, 1D-CNN). I collaborate with LSU AgCenter's LaHouse Research Center on agricultural and coastal resilience research.</p>
-        <p>My dissertation core paper benchmarks 8 ML/DL algorithms (XGBoost, RF, GBM, SVM, MLP, 1D-CNN, LSTM, CNN-LSTM) for simultaneous susceptibility mapping of four compound coastal hazards — flooding, subsidence, storm surge, and salinity intrusion — across Terrebonne Parish at 30-m resolution, with spatial block cross-validation revealing a 53% performance gap versus standard holdout metrics.</p>
+        <p>My dissertation core paper benchmarks 8 ML/DL algorithms (XGBoost, RF, GBM, SVM, MLP, 1D-CNN, LSTM, CNN-LSTM) for simultaneous susceptibility mapping of four compound coastal hazards — flooding, subsidence, storm surge, and salinity intrusion — across Terrebonne Parish at 30-m resolution, using 5-fold spatial block cross-validation to test genuine geographic generalizability beyond standard holdout metrics (analysis in final revision).</p>
         <div class="about-highlights">
           <div class="highlight"><div class="highlight-icon">&#127758;</div><div><strong>Coastal Louisiana</strong><br>Primary study area for dissertation research</div></div>
           <div class="highlight"><div class="highlight-icon">&#128200;</div><div><strong>ML &amp; Deep Learning</strong><br>XGBoost, LSTM, 1D-CNN, Stacking Ensemble</div></div>
@@ -244,7 +244,7 @@
   <div class="container">
     <div class="section-label">Portfolio</div>
     <h2 class="section-title">Featured Projects</h2>
-    <p class="section-sub">A selection of GIS and remote sensing projects spanning coastal hazard research, urban analysis, and applied spatial modeling.</p>
+    <p class="section-sub">Ordered by research depth — dissertation-level ML/DL work first, applied research chapters next, coursework last.</p>
 
     <div class="filter-bar">
       <button class="filter-btn active" data-filter="all">All</button>
@@ -360,7 +360,7 @@
         <div class="pub-type">Journal Manuscript · Under Review</div>
         <h3>Multi-Hazard Coastal Susceptibility Mapping — Deltaic Louisiana</h3>
         <p class="pub-authors">Hossain, T. et al.</p>
-        <p>Simultaneous susceptibility mapping of flooding, land subsidence, storm surge, and salinity intrusion across Terrebonne Parish using 8 ML/DL algorithms (XGBoost, RF, GBM, SVM, MLP, 1D-CNN, LSTM, CNN-LSTM) and 65 conditioning factors at 30-m resolution. 5-fold spatial block cross-validation reveals 53% performance gap versus standard holdout metrics.</p>
+        <p>Simultaneous susceptibility mapping of flooding, land subsidence, storm surge, and salinity intrusion across Terrebonne Parish using 8 ML/DL algorithms (XGBoost, RF, GBM, SVM, MLP, 1D-CNN, LSTM, CNN-LSTM) and 65 conditioning factors at 30-m resolution, with 5-fold spatial block cross-validation to expose real-world generalizability that conventional holdout metrics conceal (final figures in revision).</p>
         <div class="pub-tags">
           <span>Machine Learning</span><span>Deep Learning</span><span>Coastal Louisiana</span><span>Multi-hazard</span>
         </div>
@@ -370,7 +370,7 @@
         <div class="pub-type">Journal Manuscript · Under Review</div>
         <h3>Ensemble ML Drought Susceptibility Mapping — Louisiana</h3>
         <p class="pub-authors">Hossain, T., Mostafiz, R.B. et al.</p>
-        <p>High-resolution (30-m) statewide drought susceptibility framework integrating Landsat 8 OLI and 15 environmental variables. XGB+ANN stacking ensemble achieves R²=0.94, AUC=0.977. Hotspot analysis identifies agricultural and hydrological drought clusters across Louisiana.</p>
+        <p>High-resolution (30-m) statewide drought susceptibility framework integrating Landsat 8 OLI and 15 environmental variables. XGBoost was the strongest individual regressor (R² ≈ 0.93), clearly ahead of Random Forest, ANN, and SVM. Hotspot analysis identifies agricultural and hydrological drought clusters across Louisiana.</p>
         <div class="pub-tags">
           <span>Drought ML</span><span>Landsat 8</span><span>Ensemble Learning</span><span>Louisiana</span>
         </div>
