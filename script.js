@@ -568,13 +568,13 @@ function initCanvas() {
         const d = Math.hypot(nodes[j].x - n.x, nodes[j].y - n.y);
         if (d < 130) {
           ctx.beginPath();
-          ctx.strokeStyle = `rgba(0,212,170,${(1 - d/130) * 0.3})`;
+          ctx.strokeStyle = `rgba(232,147,90,${(1 - d/130) * 0.3})`;
           ctx.lineWidth = 0.7;
           ctx.moveTo(n.x, n.y); ctx.lineTo(nodes[j].x, nodes[j].y); ctx.stroke();
         }
       }
       ctx.beginPath(); ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
-      ctx.fillStyle = n.teal ? 'rgba(0,212,170,0.7)' : 'rgba(0,150,255,0.6)';
+      ctx.fillStyle = n.teal ? 'rgba(232,147,90,0.7)' : 'rgba(79,184,168,0.6)';
       ctx.fill();
     });
     animId = requestAnimationFrame(loop);
